@@ -71,3 +71,15 @@ func WithObjectMetaFrom(from metav1.ObjectMeta) WorkspaceOption {
 		workspace.ObjectMeta.CreationTimestamp = from.CreationTimestamp
 	}
 }
+
+func WithLabel(key, value string) WorkspaceOption {
+	return func(workspace *toolchainv1alpha1.Workspace) {
+		ll := workspace.GetLabels()
+		if ll == nil {
+			ll = map[string]string{}
+		}
+
+		ll[key] = value
+		workspace.SetLabels(ll)
+	}
+}
