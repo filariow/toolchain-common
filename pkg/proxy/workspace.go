@@ -72,6 +72,12 @@ func WithObjectMetaFrom(from metav1.ObjectMeta) WorkspaceOption {
 	}
 }
 
+func WithVisibility(visibility toolchainv1alpha1.SpaceVisibility) WorkspaceOption {
+	return func(workspace *toolchainv1alpha1.Workspace) {
+		workspace.Spec.Visibility = visibility
+	}
+}
+
 func WithLabel(key, value string) WorkspaceOption {
 	return func(workspace *toolchainv1alpha1.Workspace) {
 		ll := workspace.GetLabels()
