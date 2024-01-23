@@ -150,24 +150,6 @@ func WithStateLabel(stateValue string) Option {
 	}
 }
 
-func WithPrivateLabel() Option {
-	return func(space *toolchainv1alpha1.Space) {
-		if space.Labels == nil {
-			space.Labels = map[string]string{}
-		}
-		space.Labels[toolchainv1alpha1.WorkspaceVisibilityLabel] = toolchainv1alpha1.WorkspaceVisibilityPrivate
-	}
-}
-
-func WithCommunityLabel() Option {
-	return func(space *toolchainv1alpha1.Space) {
-		if space.Labels == nil {
-			space.Labels = map[string]string{}
-		}
-		space.Labels[toolchainv1alpha1.WorkspaceVisibilityLabel] = toolchainv1alpha1.WorkspaceVisibilityCommunity
-	}
-}
-
 func CreatedBefore(before time.Duration) Option {
 	return func(space *toolchainv1alpha1.Space) {
 		space.ObjectMeta.CreationTimestamp = metav1.Time{Time: time.Now().Add(-before)}
