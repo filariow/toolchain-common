@@ -49,6 +49,22 @@ func PerMemberCluster(name string, value int) PerMemberClusterOptionInt {
 	}
 }
 
+//---PublicViewer Configuration---//
+
+type PublicViewerOption struct {
+	*ToolchainConfigOptionImpl
+}
+
+func PublicViewer(enabled bool) *PublicViewerOption {
+	o := &PublicViewerOption{
+		ToolchainConfigOptionImpl: &ToolchainConfigOptionImpl{},
+	}
+	o.addFunction(func(config *toolchainv1alpha1.ToolchainConfig) {
+		config.Spec.PublicViewerConfig = &toolchainv1alpha1.PublicViewerConfiguration{Enabled: enabled}
+	})
+	return o
+}
+
 //---Host Configurations---//
 
 type EnvironmentOption struct {
