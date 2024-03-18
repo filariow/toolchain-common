@@ -12,8 +12,8 @@ func (c PublicViewerConfig) Enabled() bool {
 	return c.Config.Enabled
 }
 
-func (c PublicViewerConfig) Username() *string {
-	return &c.Config.Username
+func (c PublicViewerConfig) Username() string {
+	return c.Config.Username
 }
 
 func (c PublicViewerConfig) IsPublicViewer(username string) bool {
