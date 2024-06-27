@@ -60,7 +60,7 @@ func PublicViewer(enabled bool) *PublicViewerOption {
 		ToolchainConfigOptionImpl: &ToolchainConfigOptionImpl{},
 	}
 	o.addFunction(func(config *toolchainv1alpha1.ToolchainConfig) {
-		config.Spec.PublicViewerConfig = &toolchainv1alpha1.PublicViewerConfiguration{Enabled: enabled}
+		config.Spec.Host.PublicViewerConfig = &toolchainv1alpha1.PublicViewerConfiguration{Enabled: enabled}
 	})
 	return o
 }
